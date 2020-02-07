@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=Color , initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Color Distance Checker</title>
+  </head>
+  <body>
+    <h1>Color Distance Checker</h1>
+    <script src="index.js"></script>
+    <script>
+      (function() {
+        const colors = [
+          '#000000',
+          'ffffff',
+          '#979797',
+          '#b9c4cb',
+          '#e5e5e5',
+          '#4a90e2',
+          '#519ff7',
+          '#3a71b0',
+          '#009e71',
+          '#06a77d',
+          '#1b4691',
+          '#e87f36',
+          '#c43546',
+          '#ff8c3b',
+          '#b8652e',
+          'bb3300'
+        ];
+        const sample = '#f58220';
+
+        console.log(
+          colors.map(hex => window.colorDistanceChecker(sample, hex))
+        );
+      })();
+    </script>
+  </body>
+</html>
