@@ -5,36 +5,33 @@
     <meta name="viewport" content="width=Color , initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Color Distance Checker</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <h1>Color Distance Checker</h1>
+    <form>
+      <div class="field field--sample-color" style="--sample-color: #be3000;">
+        <label class="field__label" for="sample">Sample color:</label>
+        <input class="field__input" type="text" id="sample" name="sample" />
+      </div>
+      <div class="field field--guideline-colors">
+        <label class="field__label" for="colors"
+          >Guideline colors (# + 6 chars each):</label
+        >
+        <textarea
+          class="field__input"
+          id="colors"
+          name="colors"
+          rows="5"
+        ></textarea>
+        <div class="guideline-colors"></div>
+      </div>
+      <div class="actions">
+        <button type="submit">Calculate</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
     <script src="index.js"></script>
-    <script>
-      (function() {
-        const colors = [
-          '#000000',
-          'ffffff',
-          '#979797',
-          '#b9c4cb',
-          '#e5e5e5',
-          '#4a90e2',
-          '#519ff7',
-          '#3a71b0',
-          '#009e71',
-          '#06a77d',
-          '#1b4691',
-          '#e87f36',
-          '#c43546',
-          '#ff8c3b',
-          '#b8652e',
-          'bb3300'
-        ];
-        const sample = '#f58220';
-
-        console.log(
-          colors.map(hex => window.colorDistanceChecker(sample, hex))
-        );
-      })();
-    </script>
+    <script src="scripts.js"></script>
   </body>
 </html>
