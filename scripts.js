@@ -6,22 +6,18 @@
   );
   const guidelineColorsContainer = doc.querySelector('.guideline-colors');
   const colors = [
-    '#000000',
-    'ffffff',
-    '#979797',
-    '#b9c4cb',
-    '#e5e5e5',
-    '#4a90e2',
-    '#519ff7',
-    '#3a71b0',
-    '#009e71',
-    '#06a77d',
-    '#1b4691',
-    '#e87f36',
-    '#c43546',
-    '#ff8c3b',
-    '#b8652e',
-    'bb3300'
+    '#2F6380',
+    '#ABE2FF',
+    '#5EC7FF',
+    '#557180',
+    '#4CA0CC',
+    '#B34B55',
+    '#BB3300',
+    '#FFE77A',
+    '#E8C66F',
+    '#FFD187',
+    '#E8AA6F',
+    '#FFA77A'
   ];
   const sample = '#f58220';
   const colorPattern = /^#(([\da-fA-F]{3}){1,2}|([\da-fA-F]{4}){1,2})$/;
@@ -58,6 +54,8 @@
 
       guidelineColorsContainer.innerHTML = '';
       guidelineColorsContainer.appendChild(colorsFragment);
+
+      console.log({ colorsBase });
     }, timeout);
   };
   let colorsBase = [];
@@ -76,5 +74,13 @@
     false
   );
 
-  console.log(colors.map(hex => colorChecker(sample, hex)));
+  const results = colors.map(hex => colorChecker(sample, hex));
+  const closestDistance = Math.min(...results);
+  const indexClosestDistance = results.indexOf(closestDistance);
+
+  console.log('%csample', `padding: 4px 8px; background: ${sample};`);
+  console.log(
+    '%cclosest',
+    `padding: 4px 8px; background: ${colors[indexClosestDistance]};`
+  );
 })(window, window.document, window.colorDistanceChecker);
