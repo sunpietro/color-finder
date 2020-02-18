@@ -1,4 +1,16 @@
-(function(global) {
+(function(root, moduleName, factory) {
+  'use strict';
+
+  if (typeof define === 'function' && define.amd) {
+    define(moduleName, factory);
+  } else if (typeof exports === 'object') {
+    exports = module.exports = factory();
+  } else {
+    root[moduleName] = factory();
+  }
+})(this, 'ColorDistanceChecker', function() {
+  'use strict';
+
   const extractHashSign = hex =>
     hex.charAt(0) === '#' ? hex.substring(1, 7) : hex;
   const generateRGB = hex => {
@@ -50,7 +62,7 @@
   const getLabDistance = (a, b) =>
     Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
 
-  global.colorDistanceChecker = (a, b) => {
+  return (a, b) => {
     if (!a && !b) {
       return;
     }
@@ -60,4 +72,4 @@
       rgbToLab(generateRGB(extractHashSign(b)))
     );
   };
-})(window);
+});

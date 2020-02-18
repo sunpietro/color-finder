@@ -39,18 +39,6 @@ button {
   align-items: baseline;
 }
 
-.guideline-color,
-.field--sample-color:after {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.5rem;
-}
-
-.field--sample-color:after {
-  content: '';
-  background: var(--sample-color);
-}
-
 .field--sample-color .field__input {
   line-height: 2rem;
 }
@@ -60,13 +48,27 @@ button {
   padding-right: 1vw;
 }
 
-.guideline-colors {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+#guideline-colors,
+#results {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(auto-fill, 8rem);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 1rem;
 }
 
-.guideline-color {
+.color {
+  margin-left: 0.5rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
   background-color: currentColor;
-  border: 1px solid #000;
+}
+
+.color:after {
+  content: attr(data-value);
+  mix-blend-mode: difference;
+  color: #fff;
 }

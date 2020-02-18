@@ -9,10 +9,11 @@
   </head>
   <body>
     <h1>Color Distance Checker</h1>
-    <form>
+    <form id="color-checker">
       <div class="field field--sample-color">
         <label class="field__label" for="sample">Sample color:</label>
         <input class="field__input" type="text" id="sample" name="sample" />
+        <div class="sample-color color"></div>
       </div>
       <div class="field field--guideline-colors">
         <label class="field__label" for="colors"
@@ -24,13 +25,17 @@
           name="colors"
           rows="5"
         ></textarea>
-        <div class="guideline-colors"></div>
+        <div id="guideline-colors"></div>
       </div>
       <div class="actions">
         <button type="submit">Calculate</button>
         <button type="reset">Reset</button>
       </div>
     </form>
+    <div id="results">
+      <div class="results__color--sample color"></div>
+      <div class="results__color--closest color"></div>
+    </div>
     <script src="index.js"></script>
     <script src="scripts.js"></script>
   </body>
