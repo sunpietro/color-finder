@@ -48,6 +48,11 @@ button {
   padding-right: 1vw;
 }
 
+.field__input {
+  min-width: 10rem;
+  max-width: 10rem;
+}
+
 #guideline-colors,
 #results {
   display: grid;
