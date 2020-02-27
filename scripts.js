@@ -1,7 +1,21 @@
 (function(global, doc, colorChecker) {
+  /*
+#b3a212
+#bb3300
+#09a1b3
+#bada55
+#ff34aa
+#123456
+#707CCC
+#D9FFBF
+#70CC86
+  */
   const form = doc.querySelector('#color-checker');
   const sampleInputContainer = doc.querySelector('.field--sample-color');
   const sampleColorContainer = doc.querySelector('.sample-color');
+  const sampleColorInputToggler = sampleInputContainer.querySelector(
+    '.field__input-toggler'
+  );
   const sampleInput = sampleInputContainer.querySelector('.field__input');
   const guidelineColorsInput = doc.querySelector(
     '.field--guideline-colors .field__input'
@@ -13,6 +27,7 @@
   const updateSampleColorPreview = () => {
     sampleColorContainer.style = `background: ${sampleInput.value}`;
     sampleColorContainer.dataset.value = sampleInput.value;
+    sampleColorInputToggler.dataset.hasColor = 1;
   };
   const updateGuidelineColorsPreview = () => {
     global.clearTimeout(colorsUpdateTimeout);
@@ -82,4 +97,11 @@
     closestColor.style = `background: ${closest}`;
     closestColor.dataset.value = closest;
   };
-})(window, window.document, window.ColorDistanceChecker);
+
+  sampleColorInputToggler.onclick = event => {
+    event.preventDefault();
+
+    sampleInputContainer.dataset.expanded =
+      parseInt(sampleInputContainer.dataset.expanded, 10) === 1 ? '0' : '1';
+  };
+})(window, window.document, window.ACDC);

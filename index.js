@@ -1,3 +1,9 @@
+/**
+ * Based on:
+ * - https://gist.github.com/manojpandey/f5ece715132c572c80421febebaf66ae
+ * - https://en.wikipedia.org/wiki/Color_difference
+ */
+
 (function(root, moduleName, factory) {
   'use strict';
 
@@ -8,7 +14,7 @@
   } else {
     root[moduleName] = factory();
   }
-})(this, 'ColorDistanceChecker', function() {
+})(this, 'ACDC', function() {
   'use strict';
 
   const extractHashSign = hex =>
@@ -59,6 +65,16 @@
 
     return [L.toFixed(4), a.toFixed(4), b.toFixed(4)];
   };
+  /**
+   * Gets the distance between 2 colors.
+   * It's based on CIELab CIE76 specification.
+   * CIELAB ΔE*
+   *
+   * @function getLabDistance
+   *
+   * @param {Array} a Lab color definition
+   * @param {Array} b Lab color definition
+   */
   const getLabDistance = (a, b) =>
     Math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2);
 

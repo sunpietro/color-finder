@@ -14,7 +14,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0 auto;
   padding: 0;
-  width: 50vw;
+  width: 60vw;
 }
 
 label {
@@ -28,6 +28,23 @@ button {
   line-height: 1.25rem;
 }
 
+.color {
+  margin-left: 0.5rem;
+  width: 10ch;
+  line-height: 10ch;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+}
+
+.color:after {
+  content: attr(data-value);
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
 .field {
   display: flex;
   flex-wrap: nowrap;
@@ -39,22 +56,105 @@ button {
   align-items: baseline;
 }
 
-.field--sample-color .field__input {
-  line-height: 2rem;
+.field--sample-color {
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+  height: 4rem;
+  width: 4rem;
+  border-radius: 2rem;
+  padding: 1rem;
+  transform-origin: left center;
+  transition: width 0.3s ease-in-out;
+  margin-bottom: 1rem;
 }
 
-.field__label {
-  flex: 0 0 11vw;
-  padding-right: 1vw;
+.field--sample-color .field__input-wrapper,
+.field--sample-color .field__input-wrapper > * {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.field--sample-color .field__input-wrapper {
+  display: grid;
+  grid-template-areas: 'label input';
+  grid-template-columns: 10rem 1fr;
+  grid-column-gap: 2rem;
+  width: 100%;
+  transition: transform 0.2s ease-in-out;
+  align-items: center;
+}
+
+.field--sample-color .field__input-wrapper > * {
+  transition: transform 0.15s ease-in-out;
+}
+
+.field--sample-color .field__label {
+  grid-area: label;
+  padding-left: 1rem;
+}
+
+.field--sample-color .field__input {
+  grid-area: input;
+  line-height: 2rem;
+  border-radius: 1.5rem;
+  max-width: 100%;
+}
+
+.field--sample-color .field__input-toggler {
+  border: 0;
+  background: none;
+  display: block;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.field--sample-color .field__input-toggler[data-has-color='0']:after {
+  /* content: 'Click'; */
+}
+
+.field--sample-color .field__input-toggler[data-has-color='0'] .sample-color {
+  display: none;
+}
+
+.field--sample-color .field__input-toggler[data-has-color='1'] {
+  margin: 0 1rem 0 0;
+}
+
+.field--sample-color .sample-color {
+  display: block;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  background: #fff;
+}
+
+.sample-color:after {
+  content: none;
+}
+
+.field--sample-color[data-expanded='1'] {
+  width: auto;
+}
+
+.field--sample-color[data-expanded='1'] .field__input-wrapper,
+.field--sample-color[data-expanded='1'] .field__input-wrapper > * {
+  transform: scaleX(1);
 }
 
 .field__input {
   min-width: 10rem;
   max-width: 10rem;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
 }
 
 #guideline-colors,
-#results {
+.results {
   display: grid;
   flex: 1 1 auto;
   grid-template-columns: repeat(auto-fill, 8rem);
@@ -62,18 +162,43 @@ button {
   grid-row-gap: 1rem;
 }
 
-.color {
-  margin-left: 0.5rem;
-  min-width: 2rem;
-  min-height: 2rem;
-  padding: 0.5rem;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: currentColor;
+.field--guideline-colors {
+  display: grid;
+  grid-template-areas: 'container colors';
+  grid-template-columns: 24rem 1fr;
+  grid-column-gap: 1rem;
+  align-items: flex-start;
 }
 
-.color:after {
-  content: attr(data-value);
-  mix-blend-mode: difference;
-  color: #fff;
+.field--guideline-colors .field__container {
+  grid-area: container;
+  display: grid;
+  grid-template-areas:
+    '. label input'
+    '. actions actions'
+    '. results results';
+  grid-template-columns: 2rem 10rem 10rem;
+  grid-column-gap: 1rem;
+}
+
+.field--guideline-colors .field__label {
+  grid-area: label;
+}
+
+.field--guideline-colors .field__input {
+  grid-area: input;
+}
+
+.field--guideline-colors .actions {
+  grid-area: actions;
+  padding-top: 1rem;
+}
+
+.field--guideline-colors .results {
+  grid-area: results;
+  padding-top: 1rem;
+}
+
+#guideline-colors {
+  grid-area: colors;
 }

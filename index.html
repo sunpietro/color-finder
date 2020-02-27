@@ -4,38 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=Color , initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Color Distance Checker</title>
+    <title>ACDC - Automated Color Distance Checker</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Color Distance Checker</h1>
-    <form id="color-checker">
-      <div class="field field--sample-color">
-        <label class="field__label" for="sample">Sample color:</label>
-        <input class="field__input" type="text" id="sample" name="sample" />
-        <div class="sample-color color"></div>
+    <h1>ACDC - Automated Color Distance Checker</h1>
+    <h2>Find out how similar colors are visually</h2>
+    <p>
+      <!-- <a href="https://dribbble.com/shots/2229372-Text-Editor-Animation"
+        >UI inspiration</a
+      > -->
+    </p>
+    <form id="color-checker" class="ui form">
+      <div class="field field--sample-color" data-expanded="1">
+        <button type="button" class="field__input-toggler" data-has-color="0">
+          <span class="sample-color color"></span>
+        </button>
+        <div class="field__input-wrapper">
+          <label class="field__label" for="sample">Sample color:</label>
+          <input class="field__input" type="text" id="sample" name="sample" />
+        </div>
       </div>
       <div class="field field--guideline-colors">
-        <label class="field__label" for="colors"
-          >Guideline colors (# + 6 chars each):</label
-        >
-        <textarea
-          class="field__input"
-          id="colors"
-          name="colors"
-          rows="5"
-        ></textarea>
+        <div class="field__container">
+          <label class="field__label" for="colors"
+            >Guideline colors<br />(# + 6 chars each):</label
+          >
+          <textarea
+            class="field__input"
+            id="colors"
+            name="colors"
+            rows="5"
+          ></textarea>
+          <div class="actions">
+            <button type="submit">Calculate</button>
+            <button type="reset">Reset</button>
+          </div>
+          <div class="results">
+            <div class="results__color--sample color"></div>
+            <div class="results__color--closest color"></div>
+          </div>
+        </div>
         <div id="guideline-colors"></div>
       </div>
-      <div class="actions">
-        <button type="submit">Calculate</button>
-        <button type="reset">Reset</button>
-      </div>
     </form>
-    <div id="results">
-      <div class="results__color--sample color"></div>
-      <div class="results__color--closest color"></div>
-    </div>
     <script src="index.js"></script>
     <script src="scripts.js"></script>
   </body>
