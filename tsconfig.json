@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "removeComments": true,
+    "module": "UMD",
+    "target": "ES6",
+    "downlevelIteration": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "lib": ["DOM", "ES2015", "DOM.Iterable", "es2017.object"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "demo"]
+}

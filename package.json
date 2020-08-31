@@ -1,0 +1,43 @@
+{
+  "name": "@sunpietro/color-finder",
+  "version": "0.9.0",
+  "description": "It's a small library that allows to find similar color in a given group of colors. Calculations are made Euclidean distance between 2 CIELab color definitions.",
+  "license": "MIT",
+  "author": {
+    "name": "Piotr Nalepa",
+    "url": "https://blog.piotrnalepa.pl"
+  },
+  "main": "dist/ColorFinder.js",
+  "bugs": {
+    "url": "https://github.com/sunpietro/color-finder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunpietro/color-finder.git"
+  },
+  "homepage": "https://github.com/sunpietro/color-finder",
+  "keywords": [
+    "javascript",
+    "color similarity",
+    "lab color",
+    "hex color",
+    "closest color",
+    "color checking"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "prettier": "^2.1.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "rollup": "rollup"
+  }
+}
