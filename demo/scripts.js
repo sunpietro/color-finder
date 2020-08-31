@@ -1,4 +1,4 @@
-(function(global, doc, colorChecker) {
+(function (global, doc, ColorFinder) {
   /*
 #b3a212
 #bb3300
@@ -56,13 +56,6 @@
       console.log({ colorsBase });
     }, timeout);
   };
-  const getClosestColor = sample => {
-    const results = colorsBase.map(hex => colorChecker(sample, hex));
-    const closestDistance = Math.min(...results);
-    const indexClosestDistance = results.indexOf(closestDistance);
-
-    return colorsBase[indexClosestDistance];
-  };
   let colorsBase = [];
 
   sampleInput.addEventListener('blur', updateSampleColorPreview, false);
@@ -79,7 +72,7 @@
     false
   );
 
-  form.onsubmit = event => {
+  form.onsubmit = (event) => {
     event.preventDefault();
 
     const sample = sampleInput.value.trim();
@@ -90,7 +83,8 @@
 
     const sampleColor = doc.querySelector('.results__color--sample');
     const closestColor = doc.querySelector('.results__color--closest');
-    const closest = getClosestColor(sample);
+    const finder = ColorFinder(colorsBase);
+    const closest = finder.findClosestColor(sample);
 
     sampleColor.style = `background: ${sample}`;
     sampleColor.dataset.value = sample;
@@ -98,10 +92,10 @@
     closestColor.dataset.value = closest;
   };
 
-  sampleColorInputToggler.onclick = event => {
+  sampleColorInputToggler.onclick = (event) => {
     event.preventDefault();
 
     sampleInputContainer.dataset.expanded =
       parseInt(sampleInputContainer.dataset.expanded, 10) === 1 ? '0' : '1';
   };
-})(window, window.document, window.ACDC);
+})(window, window.document, window.ColorFinder);
