@@ -7,6 +7,8 @@
     "downlevelIteration": true,
     "allowJs": false,
     "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "./src/",
     "lib": ["DOM", "ES2015", "DOM.Iterable", "es2017.object"]
   },
   "include": ["src"],

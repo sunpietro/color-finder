@@ -8,6 +8,7 @@
     "url": "https://blog.piotrnalepa.pl"
   },
   "main": "dist/ColorFinder.js",
+  "types": "./src/main.d.ts",
   "bugs": {
     "url": "https://github.com/sunpietro/color-finder/issues"
   },
