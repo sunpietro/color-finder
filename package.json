@@ -1,6 +1,6 @@
 {
   "name": "@sunpietro/color-finder",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "It's a small library that allows to find similar color in a given group of colors. Calculations are made Euclidean distance between 2 CIELab color definitions.",
   "license": "MIT",
   "author": {
