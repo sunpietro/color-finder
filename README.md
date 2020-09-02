@@ -2,6 +2,10 @@
 
 Checks the distance between 2 hex colors and finds the closest color to a given sample.
 
+Looking for demo? [Check the demo page then](https://sunpietro.github.io/color-finder/).
+
+If you want to know more how it's done, I suggest reading [this article](https://blog.piotrnalepa.pl/2020/09/01/how-to-find-a-similar-colour-in-your-colour-guidelines-with-javascript/).
+
 ## Installation
 
 ```
