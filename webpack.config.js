@@ -3,12 +3,17 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: './src/index.ts',
-  devtool: global.process.env === 'DEV' ? 'inline-source-map' : false,
+  devtool: process.env.NODE_ENV === 'development' ? 'inline-source-map' : false,
   module: {
     rules: [
       {
         test: /\.ts?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'ts-loader',
+          options: {
+            compilerOptions: { module: 'CommonJS' },
+          },
+        },
         exclude: /node_modules/,
       },
     ],
@@ -19,8 +24,10 @@ module.exports = {
   output: {
     filename: 'ColorFinder.js',
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'umd',
-    libraryExport: 'default',
-    library: 'ColorFinder',
+    library: {
+      name: 'ColorFinder',
+      type: 'umd',
+      export: 'default',
+    },
   },
 };

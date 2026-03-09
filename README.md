@@ -8,13 +8,13 @@ If you want to know more how it's done, I suggest reading [this article](https:/
 
 ## Installation
 
-```
+```bash
 npm install @sunpietro/color-finder
 ```
 
 ## How to use it?
 
-```
+```typescript
 import ColorFinder from `@sunpietro/color-finder`;
 
 const colorsLibrary = [

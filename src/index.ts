@@ -111,10 +111,10 @@ const ColorFinder = (colors: string[]): ColorFinderMethods => {
   colorsBase = colors;
 
   return {
-    updateColorsLibrary: (colors) => {
+    updateColorsLibrary: (colors): void => {
       colorsBase = colors;
     },
-    findClosestColor: (color) => {
+    findClosestColor: (color): string => {
       const results = colorsBase.map((hex) =>
         checkHexColorsSimilarity(color, hex)
       );
