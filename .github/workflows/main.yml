@@ -24,6 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Writes safe.directory into the dir mounted as HOME inside Docker containers
+      - name: Configure git safe directory for Docker
+        run: |
+          mkdir -p "$RUNNER_TEMP/_github_home"
+          printf "[safe]\n\tdirectory = /github/workspace\n" > "$RUNNER_TEMP/_github_home/.gitconfig"
+
       # bumps up the package version
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@v7.1.0
