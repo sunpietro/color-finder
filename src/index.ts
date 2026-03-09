@@ -45,7 +45,7 @@ const rgbToLab = (rgbColor: RGBStruct): LabStruct => {
     let part = value / 255;
 
     if (part > 0.04045) {
-      return ((part + 0.55) / 1.055) * 100;
+      return Math.pow((part + 0.055) / 1.055, 2.4) * 100;
     }
 
     return (part = (part / 12.92) * 100);
@@ -61,10 +61,10 @@ const rgbToLab = (rgbColor: RGBStruct): LabStruct => {
   ];
 
   const XYZ = xyzColor.map((value) => {
-    if (value / 0.008856) {
+    if (value > 0.008856) {
       return Math.pow(value, 1 / 3);
     } else {
-      return 7.787 * value + 16 / 166;
+      return 7.787 * value + 16 / 116;
     }
   });
 
@@ -73,9 +73,9 @@ const rgbToLab = (rgbColor: RGBStruct): LabStruct => {
   const b = 200 * (XYZ[1] - XYZ[2]);
 
   return [
-    parseInt(L.toFixed(4), 10),
-    parseInt(a.toFixed(4), 10),
-    parseInt(b.toFixed(4), 10),
+    parseFloat(L.toFixed(4)),
+    parseFloat(a.toFixed(4)),
+    parseFloat(b.toFixed(4)),
   ];
 };
 /**
@@ -95,7 +95,7 @@ let colorsBase = [];
  * Checks color similarity distance
  */
 const checkHexColorsSimilarity = (a: string, b: string): number => {
-  if (!a && !b) {
+  if (!a || !b) {
     return;
   }
 
